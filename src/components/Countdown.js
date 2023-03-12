@@ -11,17 +11,13 @@ function Countdown() {
   useEffect(() => {
     const intervalTimer = setInterval(() => {
       if (cdTime > 0) {
-        updateCd();
+        let newTime;
+        newTime = cdTime - 0.1;
+        setCdTime(newTime.toFixed(1));
       } else {
         setCdTime(0);
       }
     }, 100);
-
-    const updateCd = () => {
-      let newTime;
-      newTime = cdTime - 0.1;
-      setCdTime(newTime.toFixed(1));
-    };
 
     return () => {
       clearInterval(intervalTimer);
@@ -63,14 +59,14 @@ function Countdown() {
       </form>
       <p ref={pError} className="pError"></p>
       {cdStart && cdTime === 0 ? (
-        <>
+        <div>
           <img
             className="fireworks"
             src="https://i.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.webp"
             alt="fireworks"
           />
           <p id="cdFinished">Countdown finished!</p>
-        </>
+        </div>
       ) : (
         <Timer cdTime={cdTime} />
       )}

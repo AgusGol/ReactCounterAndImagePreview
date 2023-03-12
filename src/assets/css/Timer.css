@@ -1,7 +1,10 @@
 .timerDiv {
   overflow: scroll;
-  
 }
+.timerDiv::-webkit-scrollbar {
+  display: none;
+}
+
 .timer {
   font-size: 170px;
   margin-top: 60px;
