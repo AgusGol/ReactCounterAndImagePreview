@@ -12,9 +12,10 @@ function Upload() {
   }
 
   const fileAdded = (e) => {
-    let file = Array.from(e.target.files);
-    if (file) {
-      setImages([...images, ...file]);
+    let files = Array.from(e.target.files);
+    if (files.length) {
+      let imageFiles = files.filter((file) => file.type.startsWith("image"));
+      setImages([...images, ...imageFiles]);
     }
   }
 
@@ -40,7 +41,11 @@ function Upload() {
             multiple
           />
           <div id="divInputImg">
-            <p>Choose a file...</p>
+            {images.length ?
+              <p>{`${images.length} images selected`}</p>
+              :
+              <p>Choose a file...</p>
+            }
           </div>
         </label>
         <input type="submit" value="Add!" className="submit" />

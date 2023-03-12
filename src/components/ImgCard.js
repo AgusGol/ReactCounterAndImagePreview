@@ -12,7 +12,7 @@ function ImgCard({ image, i, deleteImg }) {
       });
       reader.readAsDataURL(image);
     }
-  });
+  }, [image]);
 
   return img !== "" ? (
     <li className="img">
