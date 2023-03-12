@@ -54,6 +54,7 @@ function Upload() {
                   i={i}
                   image={image}
                   deleteImg={deleteImg}
+                  key={i}
                 />
               );
             })

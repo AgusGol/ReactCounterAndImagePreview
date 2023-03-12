@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../assets/css/ImgCard.css";
 
-function ImgCard({ image, i, namePreview, deleteImg }) {
+function ImgCard({ image, i, deleteImg }) {
   const [img, setImg] = useState("");
 
   useEffect(() => {
@@ -15,12 +15,12 @@ function ImgCard({ image, i, namePreview, deleteImg }) {
   });
 
   return img !== "" ? (
-    <li className="img" key={i}>
-      <img key={i + img} className="imgPreview" src={img} alt="preview"></img>
-      <p className="imgPreviewName" key={i + namePreview}>
+    <li className="img">
+      <img className="imgPreview" src={img} alt="preview"></img>
+      <p className="imgPreviewName">
         {image.name}
       </p>
-      <button className="btnDelete" value={i} onClick={deleteImg} key={i + 100}>
+      <button className="btnDelete" value={i} onClick={deleteImg}>
         Delete
       </button>
     </li>
