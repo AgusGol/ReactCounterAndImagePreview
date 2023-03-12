@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.home h1 {
+  font-weight: 300;
+}

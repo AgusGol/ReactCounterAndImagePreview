@@ -1,0 +1,51 @@
+.countdown {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.cdTitle {
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+#seconds {
+  width: 80%;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+
+.submitCD {
+  width: 15%;
+  background-color: #50aee2;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.secondsForm {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fireworks {
+  width: 50%;
+  margin-top: 50px;
+  border-radius: 50px;
+}
+
+.cdFinished {
+  font-weight: 500;
+}
+
+.pError {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .fireworks {
+    width: 80%;
+  }
+}

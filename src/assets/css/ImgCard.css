@@ -1,0 +1,24 @@
+.imgPreview {
+  width: 40%;
+}
+
+.imgPreviewName {
+  width: 45%;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.btnDelete {
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  background-color: #3f5baf;
+  color: white;
+}
