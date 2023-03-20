@@ -11,8 +11,7 @@ function Countdown() {
   useEffect(() => {
     const intervalTimer = setInterval(() => {
       if (cdTime > 0) {
-        let newTime;
-        newTime = cdTime - 0.1;
+        const newTime = cdTime - 0.1;
         setCdTime(newTime.toFixed(1));
       } else {
         setCdTime(0);

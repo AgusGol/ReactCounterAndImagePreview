@@ -12,9 +12,9 @@ function Upload() {
   }
 
   const fileAdded = (e) => {
-    let files = Array.from(e.target.files);
+    const files = Array.from(e.target.files);
     if (files.length) {
-      let imageFiles = files.filter((file) => file.type.startsWith("image"));
+      const imageFiles = files.filter((file) => file.type.startsWith("image"));
       setImages([...images, ...imageFiles]);
     }
   }
@@ -52,8 +52,7 @@ function Upload() {
       </form>
 
       <ul className="images">
-        {images.length
-          ? images.map((image, i) => {
+        { images.map((image, i) => {
               return (
                 <ImgCard
                   i={i}
@@ -63,7 +62,7 @@ function Upload() {
                 />
               );
             })
-          : ""}
+        }
       </ul>
     </section>
   );
