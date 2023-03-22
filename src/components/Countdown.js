@@ -2,37 +2,29 @@ import "../assets/css/Countdown.css";
 import { useState, useEffect, useRef } from "react";
 import Timer from "./Timer";
 
-function Countdown() {
+const Countdown = () => {
   const cdInput = useRef();
-  const pError = useRef();
-  const [cdTime, setCdTime] = useState(0.0);
-  const [cdStart, setCdStart] = useState(0);
+  const [cdTime, setCdTime] = useState(0);
+  const [cdStart, setCdStart] = useState(false);
 
   useEffect(() => {
-    const intervalTimer = setInterval(() => {
-      if (cdTime > 0) {
+    if (cdTime > 0) {
+      const timeOutTimer = setTimeout(() => {
         const newTime = cdTime - 0.1;
-        setCdTime(newTime.toFixed(1));
-      } else {
-        setCdTime(0);
-      }
-    }, 100);
+        setCdTime(Number(newTime.toFixed(1)));
+      }, 100);
 
-    return () => {
-      clearInterval(intervalTimer);
-    };
+      return () => {
+        clearTimeout(timeOutTimer);
+      };
+    } else setCdTime(0);
   }, [cdTime]);
 
   const startCD = (e) => {
     e.preventDefault();
     if (cdInput.current.value.length) {
-      pError.current.innerText = "";
-      setCdTime(cdInput.current.value);
-      setCdStart(1);
-    } else {
-      pError.current.innerText =
-        "You must enter the number of seconds to start the countdown";
-        setCdStart(0);
+      setCdTime(Number(cdInput.current.value));
+      setCdStart(true);
     }
   };
 
@@ -48,15 +40,16 @@ function Countdown() {
           placeholder="Enter the number of seconds here..."
           name="seconds"
           id="seconds"
+          required
         />
         <input
           type="submit"
           value="Start!"
           name="submitCD"
           className="submitCD"
+          required
         />
       </form>
-      <p ref={pError} className="pError"></p>
       {cdStart && cdTime === 0 ? (
         <div>
           <img
@@ -71,6 +64,6 @@ function Countdown() {
       )}
     </section>
   );
-}
+};
 
 export default Countdown;

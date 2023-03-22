@@ -1,32 +1,41 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import "../assets/css/ImgCard.css";
 
-function ImgCard({ image, i, deleteImg }) {
-  const [img, setImg] = useState("");
+const ImgCard = ({
+  image,
+  deleteImg
+}) => {
+  const [imgSrc, setImg] = useState("");
 
   useEffect(() => {
     if (image) {
       const reader = new FileReader();
-      reader.addEventListener("loadend", () => {
+      reader.onloadend = () => {
         setImg(reader.result);
-      });
+      };
       reader.readAsDataURL(image);
     }
   }, [image]);
 
-  return img !== "" ? (
+  if (!imgSrc) {
+    return;
+  }
+
+  return (
     <li className="img">
-      <img className="imgPreview" src={img} alt="preview"></img>
-      <p className="imgPreviewName">
-        {image.name}
-      </p>
-      <button className="btnDelete" value={i} onClick={deleteImg}>
+      <img className="imgPreview" src={imgSrc} alt="preview"></img>
+      <p className="imgPreviewName">{image.name}</p>
+      <button className="btnDelete" value={image.id} onClick={deleteImg}>
         Delete
       </button>
     </li>
-  ) : (
-    ""
   );
-}
+};
+
+ImgCard.propTypes = {
+  image: PropTypes.object,
+  deleteImg: PropTypes.func,
+};
 
 export default ImgCard;
