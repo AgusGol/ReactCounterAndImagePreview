@@ -14,11 +14,12 @@ const Upload = () => {
   const fileAdded = (e) => {
     const files = Array.from(e.target.files);
     if (files.length) {
-      const imageFiles = files.filter((file) => file.type.startsWith("image"));
-      imageFiles.map((image) => {
-        image.id = image.name + Math.random() * 100;
-        return image;
-      });
+      const imageFiles = files
+        .filter((file) => file.type.startsWith("image"))
+        .map((image) => {
+          image.id = image.name + Math.random() * 100;
+          return image;
+        });
       setImages([...images, ...imageFiles]);
     }
   };
